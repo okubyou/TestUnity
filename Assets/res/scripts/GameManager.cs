@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour {
     //警戒　1
     const int ALERT =  2;
     //攻撃 戦闘 3 
+    const int GOAL = 4;
 
     static int mode = NORMAL;
     static float timeCount = 0;
@@ -21,8 +22,8 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 	    
 	}
 	
