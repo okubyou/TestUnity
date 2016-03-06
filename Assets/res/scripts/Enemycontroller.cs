@@ -16,11 +16,11 @@ public class Enemycontroller : MonoBehaviour {
 	}
 
     void inSite(){
-
+        GameManager.startAlertMode();
     }
 
     void enterSite(){
-        GameManager.startAlertMode();
+        
     }
 
     void exitSite(){
