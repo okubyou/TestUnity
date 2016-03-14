@@ -16,10 +16,14 @@ public class GameManager : MonoBehaviour {
 
 
     public static void startAlertMode(){
-        if (mode == NORMAL) {
+        if (mode == NORMAL){
             mode = ALERT;
             GameManager.timeCount += 5;
         }
+    }
+
+    public static void startGoalMode() {
+        mode = GOAL;
     }
 
     // Use this for initialization
@@ -29,7 +33,9 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        timeCount += Time.deltaTime;
-        timeText.text = timeCount.ToString("##0.00");
+        if(mode != GOAL){
+            timeCount += Time.deltaTime;
+            timeText.text = timeCount.ToString("##0.00");
+        }
     }
 }
