@@ -7,7 +7,7 @@ public class CharaController : MonoBehaviour {
 
     private CharacterController charController;
     private Animator animator;
-
+    public Vector3 direction;
     [SerializeField] float speed = 2.0f;
 
     // Use this for initialization
@@ -21,7 +21,7 @@ public class CharaController : MonoBehaviour {
 
         //カメラからみた入力の前後左右を取得
         Vector3 cameraForward = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
-        Vector3 direction = cameraForward * Input.GetAxis("Vertical") +
+        direction = cameraForward * Input.GetAxis("Vertical") +
             Camera.main.transform.right * Input.GetAxis("Horizontal");
 
         //単位(?)化
