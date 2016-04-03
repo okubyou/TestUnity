@@ -15,7 +15,7 @@ public class GoalCrystal : MonoBehaviour {
 
     void OnTriggerEnter(Collider collider) {
         if(collider.gameObject.CompareTag("Player")) {
-            GameManager.startGoalMode();
+            GameManager.setMode(GameManager.GOAL);
         }
     }
 }
