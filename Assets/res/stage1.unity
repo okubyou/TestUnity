@@ -517,7 +517,7 @@ Prefab:
     - target: {fileID: 11445660, guid: 2c258566e51b6244abd4f474f70b1dc5, type: 2}
       propertyPath: m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 711659070}
     - target: {fileID: 2095392, guid: 2c258566e51b6244abd4f474f70b1dc5, type: 2}
       propertyPath: m_ClearFlags
       value: 2
@@ -541,6 +541,10 @@ Prefab:
     - target: {fileID: 2095392, guid: 2c258566e51b6244abd4f474f70b1dc5, type: 2}
       propertyPath: field of view
       value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 484228, guid: 2c258566e51b6244abd4f474f70b1dc5, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2c258566e51b6244abd4f474f70b1dc5, type: 2}
@@ -801,6 +805,10 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 691216932}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &711659070 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 456020, guid: 3d1f3160eb4d3884bb99262708698ecd, type: 2}
+  m_PrefabInternal: {fileID: 1320625196}
 --- !u!1001 &744777335
 Prefab:
   m_ObjectHideFlags: 0

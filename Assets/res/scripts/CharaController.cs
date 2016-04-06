@@ -51,7 +51,7 @@ public class CharaController : MonoBehaviour {
         }
 
         //入力の残滓で急激に方向が変わるのを抑制
-        if (Math.Abs(Input.GetAxis("Vertical")) > 0.18f || Math.Abs(Input.GetAxis("Horizontal")) > 0.18f) {
+        if (Math.Abs(Input.GetAxis("Vertical")) > 0.14f || Math.Abs(Input.GetAxis("Horizontal")) > 0.14f) {
             transform.forward = direction;
         }
 
