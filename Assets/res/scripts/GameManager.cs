@@ -14,11 +14,13 @@ public class GameManager : MonoBehaviour {
     static int mode = READY;
     static float timeCount = 0;
     public Text timeText;
+    static SoundManager soundMgr;
 
     public static void startAlertMode(){
         if (mode == NORMAL){
             mode = ALERT;
             GameManager.timeCount += 5;
+            soundMgr.playSound();
         }
     }
 
@@ -28,8 +30,8 @@ public class GameManager : MonoBehaviour {
 
     // Use this for initialization
     void Start (){
-	    
-	}
+        soundMgr = SoundManager.getInstance();
+    }
 	
 	// Update is called once per frame
 	void Update () {
