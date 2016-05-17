@@ -38,16 +38,16 @@ public class CharaController : MonoBehaviour {
         }
 
         //しゃがみ
-        //
         if (Input.GetKeyDown(KeyCode.LeftControl)) {
             animator.SetBool("onAllFours", true);//しゃがみフラグ
+            gameObject.GetComponent<HeadLookController>().enabled = false;
         }
         if (Input.GetKey(KeyCode.LeftControl)) {
-            direction *= 0.22f; // !!! Magic Number !!! 
-       
+            direction *= 0.22f; // !!! Magic Number !!!   
         }
         if (Input.GetKeyUp(KeyCode.LeftControl)) {
             animator.SetBool("onAllFours", false);
+            gameObject.GetComponent<HeadLookController>().enabled = true;
         }
 
         //入力の残滓で急激に方向が変わるのを抑制
