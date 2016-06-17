@@ -13,31 +13,31 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: forward
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: onAllFours
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: aim
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: fire
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -48,7 +48,7 @@ AnimatorController:
     m_BlendingMode: 0
     m_SyncedLayerIndex: -1
     m_DefaultWeight: 0
-    m_IKPass: 0
+    m_IKPass: 1
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
   - serializedVersion: 5
@@ -63,6 +63,58 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
+--- !u!114 &11404902
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d21f62532d52fad42863fdbe5c915c5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offSet: {x: 0, y: 0, z: 0}
+  heightRate: 0.4
+--- !u!114 &11425016
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d21f62532d52fad42863fdbe5c915c5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offSet: {x: 0, y: 0, z: 0.1}
+  heightRate: 1
+--- !u!114 &11440412
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d21f62532d52fad42863fdbe5c915c5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offSet: {x: 0, y: 0, z: 0.3}
+  heightRate: 1
+--- !u!114 &11468174
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d21f62532d52fad42863fdbe5c915c5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offSet: {x: 0, y: 0, z: 0}
+  heightRate: 0.4
 --- !u!206 &20658252
 BlendTree:
   m_ObjectHideFlags: 1
@@ -455,7 +507,8 @@ AnimatorState:
   m_Transitions:
   - {fileID: 110102458}
   - {fileID: 110112444}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 11404902}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -480,7 +533,8 @@ AnimatorState:
   m_Transitions:
   - {fileID: 110190298}
   - {fileID: 110199548}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 11468174}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -528,7 +582,8 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 110126420}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 11440412}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -603,7 +658,8 @@ AnimatorState:
   - {fileID: 110176942}
   - {fileID: 110155176}
   - {fileID: 110135898}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 11425016}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -685,7 +741,7 @@ AnimatorStateMachine:
     m_Position: {x: -60, y: 96, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110256306}
-    m_Position: {x: 156, y: -24, z: 0}
+    m_Position: {x: 156, y: -12, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110202618}
     m_Position: {x: 156, y: 120, z: 0}

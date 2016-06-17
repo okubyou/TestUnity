@@ -11,7 +11,7 @@ public class Aim : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void LateUpdate () {
 
         if(Input.GetMouseButton(0)) {
             animator.SetBool("fire", true);
@@ -20,18 +20,22 @@ public class Aim : MonoBehaviour {
         }
 
         if(Input.GetMouseButton(1)) {
-            animator.SetBool("aim", true);
-            gameObject.GetComponent<HeadLookController>().enabled = true;
-
-            if(Vector3.Angle(
-                new Vector3(transform.forward.x, 0, transform.forward.z),
-                new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z)
-                ) > 90
-            )
+            if(!Input.GetKeyDown(KeyCode.LeftControl)) {
+                animator.SetBool("aim", true);
+                gameObject.GetComponent<HeadLookController>().enabled = true;
+                gameObject.GetComponent<IKController>().enabled = true;
+                //if(Vector3.Angle(
+                //    new Vector3(transform.forward.x, 0, transform.forward.z),
+                //    new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z)
+                //    ) > 90
+                //){
                 transform.forward = new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z);
-        } else{
+                //}
+            }
+        }else{
             animator.SetBool("aim", false);
             gameObject.GetComponent<HeadLookController>().enabled = false;
+            gameObject.GetComponent<IKController>().enabled = false;
         }
     }
 

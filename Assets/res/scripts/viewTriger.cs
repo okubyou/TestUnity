@@ -11,7 +11,6 @@ public class viewTriger : MonoBehaviour {
     void Start () {
         //親オブジェクトを取得
         _parent = transform.parent.gameObject;
-        Debug.Log(_parent.name);
 
     }
 	
@@ -21,12 +20,15 @@ public class viewTriger : MonoBehaviour {
     }
 
     void OnTriggerStay(Collider _collider) {
+        int layerMask = 1 << 9;// 9 : enemyViewSite layer
+        layerMask = ~layerMask;
+
         if (_collider.gameObject.CompareTag("Player")){
             //_collider.transform.positionとCharacterControllerの中心のズレを補正
             charContrller = _collider.GetComponent<CharacterController>();
             targetPosition = _collider.transform.position + charContrller.center;
             //視界用のコライダーのレイヤーはenemyViewSitにする必要があります　:パラメータで設定できるようにしたい
-            if (!Physics.Linecast(targetPosition, _parent.transform.position,9)){// 9 : enemyViewSite layer
+            if (!Physics.Linecast(targetPosition, _parent.transform.position, layerMask)){
                 _parent.SendMessage("inSite");
             }
         }
