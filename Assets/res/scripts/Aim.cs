@@ -11,7 +11,7 @@ public class Aim : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void LateUpdate () {
+	void Update () {
 
         if(Input.GetMouseButton(0)) {
             animator.SetBool("fire", true);
@@ -19,7 +19,7 @@ public class Aim : MonoBehaviour {
             animator.SetBool("fire", false);
         }
 
-        if(Input.GetMouseButton(1)) {
+        if(Input.GetMouseButton(1) && !Input.GetKey(KeyCode.LeftControl)) {
             if(!Input.GetKeyDown(KeyCode.LeftControl)) {
                 animator.SetBool("aim", true);
                 gameObject.GetComponent<HeadLookController>().enabled = true;
@@ -29,6 +29,7 @@ public class Aim : MonoBehaviour {
                 //    new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z)
                 //    ) > 90
                 //){
+                
                 transform.forward = new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z);
                 //}
             }
