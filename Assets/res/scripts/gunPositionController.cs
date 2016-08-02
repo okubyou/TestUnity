@@ -25,7 +25,6 @@ public class gunPositionController : MonoBehaviour {
 
         Vector3 targePosition = hit.point;
         Debug.DrawLine(transform.position, targePosition, Color.cyan);
-        //Vector3 aimVector = transform.position - hit.point;
-       
+
     }
 }
