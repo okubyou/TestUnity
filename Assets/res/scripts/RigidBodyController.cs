@@ -3,7 +3,7 @@ using System.Collections;
 using System;
 using UnityEngine.UI;
 
-public class RigidBodyController : MonoBehaviour {
+public class RigidBodyController: MonoBehaviour {
 
     //private CharacterController charController;
     private Rigidbody rigidBody;
@@ -31,40 +31,44 @@ public class RigidBodyController : MonoBehaviour {
         direction = direction.normalized;
 
         //ジャンプ
-        if (Input.GetButtonDown("Jump")) {
+        if(Input.GetButtonDown("Jump")) {
             //charController.SimpleMove(new Vector3(10, 30, 0));
         }
 
         //歩き
-        if (Input.GetKey(KeyCode.LeftShift)) {
+        if(Input.GetKey(KeyCode.LeftShift)) {
             direction *= 0.3f;              //XXX magic number
         }
 
         //しゃがみ
         //
-        if (Input.GetKeyDown(KeyCode.LeftControl)) {
+        if(Input.GetKeyDown(KeyCode.LeftControl)) {
             animator.SetBool("onAllFours", true);//しゃがみフラグ
         }
-        if (Input.GetKey(KeyCode.LeftControl)) {
+        if(Input.GetKey(KeyCode.LeftControl)) {
             direction *= 0.22f; // !!! Magic Number !!! 
 
         }
-        if (Input.GetKeyUp(KeyCode.LeftControl)) {
+        if(Input.GetKeyUp(KeyCode.LeftControl)) {
             animator.SetBool("onAllFours", false);
         }
 
+
         //入力の残滓で急激に方向が変わるのを抑制
-        if (Math.Abs(Input.GetAxis("Vertical")) > 0.2f || Math.Abs(Input.GetAxis("Horizontal")) > 0.2f) {
-            transform.forward = direction;
+        if(Math.Abs(Input.GetAxis("Vertical")) > 0.2f || Math.Abs(Input.GetAxis("Horizontal")) > 0.2f) {
+            //transform.forward = direction;
+          //  rigidBody.MoveRotation(direction);
         }
 
-        //アニメーターに前進速度を設定
-        animator.SetFloat("forward", direction.magnitude);
+        animator.SetFloat("forward", (direction * speed).magnitude);
 
         //移動処理
-        //charController.SimpleMove(direction * speed);
-        //rigidBody.AddForce(new Vector3(0, 0, 300));
-        rigidBody.velocity = new Vector3((direction.x * speed), rigidBody.velocity.y, (direction.z * speed));
+        //rigidBody.velocity = new Vector3((direction.x * speed), rigidBody.velocity.y, (direction.z * speed));
+        rigidBody.MovePosition(transform.position + direction * speed * Time.deltaTime);
     }
 
+    void FixedUpdate() {
+        //アニメーターに前進速度を設定
+        
+    }
 }

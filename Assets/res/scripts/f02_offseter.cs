@@ -7,6 +7,7 @@ public class f02_offseter : StateMachineBehaviour {
     CharacterController charController;
     [SerializeField] Vector3 offSet;
     [SerializeField] float heightRate = 1f;
+    [SerializeField] public Vector3 controllerPosition;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
@@ -17,15 +18,15 @@ public class f02_offseter : StateMachineBehaviour {
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-    //
-    //}
+    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
+        controllerPosition = charController.center;
+    }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         charController.center = charController.center - offSet;
         charController.height = charController.height / heightRate;
-        charController.center = charController.center / heightRate;    
+        charController.center = charController.center / heightRate;
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here

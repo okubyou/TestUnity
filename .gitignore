@@ -82,3 +82,7 @@ sysinfo.txt
 #store assets
 /Assets/storeAssets/*
 /Assets/Standard Assets/*
+
+#free‘fŞ
+/Assets/res/texture/freeTextures
+/Assets/res/texture/freeTextures/*

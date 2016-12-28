@@ -25,6 +25,7 @@ public class aimCamera : MonoBehaviour {
     }
 
     void LateUpdate() {
+        //プレイヤーがカメラに近すぎる場合は描画しない
         int layerMask = 1 << 8;// 8 : Player layer
         Vector3 distance = (target.position - Camera.main.transform.position);
         if(distance.sqrMagnitude < (miniDistance * miniDistance)) {

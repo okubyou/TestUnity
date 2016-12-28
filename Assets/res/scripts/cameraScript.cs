@@ -19,7 +19,9 @@ public class cameraScript : MonoBehaviour {
         layerMask = ~layerMask;
         RaycastHit hit;
 
-        if(Physics.Linecast(target.position, Camera.main.transform.position, out hit, layerMask, QueryTriggerInteraction.Collide)) {
+        //壁ぴったりまで寄らないように終点は Camera.main.transform.forward 分手前にする
+        if(Physics.Linecast(target.position, Camera.main.transform.position + Camera.main.transform.forward,
+            out hit, layerMask, QueryTriggerInteraction.Collide)) {
             Camera.main.transform.position = hit.point;
         }
 

@@ -5,10 +5,13 @@ using UnityEngine.UI;
 
 public class CharaController : MonoBehaviour {
 
+    public Vector3 direction;
+    public GameObject fireController;
+
     private CharacterController charController;
     private Animator animator;
-    public Vector3 direction;
-    public bool AIM = false;
+    
+    public bool AIM = false; //デバッグ・テスト用
     [SerializeField] float speed = 2.0f;
     private Vector3 moveDirection;
 
@@ -61,6 +64,7 @@ public class CharaController : MonoBehaviour {
         //移動処理
         moveDirection = moveDirection * 0.9f;
         moveDirection = moveDirection + direction * 0.2f;
+
         if(moveDirection.magnitude > 1) {
             moveDirection = moveDirection.normalized;
         }
@@ -70,35 +74,34 @@ public class CharaController : MonoBehaviour {
         }
 
         //アニメーターに前進速度を設定
-        animator.SetFloat("forward", moveDirection.magnitude);
+        //animator.SetFloat("forward", moveDirection.magnitude);
+
+        animator.SetFloat("forward", (new Vector3(charController.velocity.x, 0, charController.velocity.z).magnitude));
 
     }
 
     void aim(){
-        if(Input.GetMouseButton(0)) {
-            animator.SetBool("fire", true);
-        } else {
-            animator.SetBool("fire", false);
-        }
+        //if(Input.GetMouseButton(0)) {
+        //    animator.SetBool("fire", true);
+        //} else {
+        //    animator.SetBool("fire", false);
+        //}
 
         if((Input.GetMouseButton(1) && !Input.GetKey(KeyCode.LeftControl)) || AIM) {
-            if(!Input.GetKeyDown(KeyCode.LeftControl)) {
-                animator.SetBool("aim", true);
-                gameObject.GetComponent<HeadLookController>().enabled = true;
-                gameObject.GetComponent<IKController>().enabled = true;
-                //if(Vector3.Angle(
-                //    new Vector3(transform.forward.x, 0, transform.forward.z),
-                //    new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z)
-                //    ) > 90
-                //){
-
-                transform.forward = new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z);
-                //}
+            animator.SetBool("aim", true);
+            //gameObject.GetComponent<HeadLookController>().enabled = true;
+            gameObject.GetComponent<IKController>().enabled = true;
+            //transform.forward = new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z);
+            //↑test
+            if(Input.GetMouseButton(0)){
+                fireController.SendMessage("fire");
+                //Fire
             }
         } else {
             animator.SetBool("aim", false);
-            gameObject.GetComponent<HeadLookController>().enabled = false;
+            //gameObject.GetComponent<HeadLookController>().enabled = false;
             gameObject.GetComponent<IKController>().enabled = false;
         }
     }
+
 }
